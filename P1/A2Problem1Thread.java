@@ -3,7 +3,7 @@
 //----COMP2240---Operating Systems----------------------------
 //----Assessment2--------------------------------------------
 //----Problem1--Sharing the Bridge---------------------------
-//----c3214157---Binbin.wang---2016/10/07---------------------
+//----c3214157---Binbin.wang---2018/09/25---------------------
 
 
 import java.util.concurrent.Semaphore;
@@ -34,6 +34,7 @@ class A2Problem1Thread implements Runnable {
 				System.out.println("NEON"+ NEON ); //The neon sign counts of farmers
 				
 				semp.release();//release Control
+				if (NEON>10) break;
 				
  			}
 			catch(Exception e){
