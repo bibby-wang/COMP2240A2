@@ -12,7 +12,7 @@ class A2Problem1Thread implements Runnable {
 	final Semaphore semp = new Semaphore(1,true);
 	int NEON = 0;
 	public void run() {
-		
+		//System.out.println(Thread.currentThread().getName() + ": writting for bridge.");
 		while(true){
 			//when someone want cross the bridge 
 			//first witting the brige empty
@@ -25,7 +25,7 @@ class A2Problem1Thread implements Runnable {
 				semp.acquire();	
 				
 				System.out.println(Thread.currentThread().getName() + ": Crossing bridge Step 5.");  
-				System.out.println(Thread.currentThread().getName() + ": Crossing bridge Step 10."); 
+				System.out.println(Thread.currentThread().getName() + ": Crossing bridge Step 10.");  
 				System.out.println(Thread.currentThread().getName() + ": Crossing bridge Step 15."); 
 				System.out.println(Thread.currentThread().getName() + ": Across the bridge."); 
 				//finsh Across the bridge then the neon light add one
@@ -34,7 +34,8 @@ class A2Problem1Thread implements Runnable {
 				System.out.println("NEON"+ NEON ); //The neon sign counts of farmers
 				
 				semp.release();//release Control
-				if (NEON>10) break;
+				
+				//if (NEON>2) break;
 				
  			}
 			catch(Exception e){
