@@ -72,22 +72,22 @@ class c3214157A2P2 {
 						A2Problem2Thread threadCustomer= new A2Problem2Thread();
 
 						threadCustomer.getData(cID,cArrive,cSeat,cLeaves);
-							new Thread(threadCustomer).start();
-					
-							
-							
-		//System.out.println ("ID-"+ cID + " Arrive-" + cArrive+ " Seat-" + cSeat + "Leaves-" +cLeaves);
-								
-							
-							String loopOut = CustomersList.get(CustomersList.size()-1).name;
-							if (cID.equals(loopOut)){timeDoLoop = false;}
-							
-							fiveSets--;
-							if (fiveSets == 0){fullFlag = false;}
+						new Thread(threadCustomer).start();
+				
+						
+						
+	//System.out.println ("ID-"+ cID + " Arrive-" + cArrive+ " Seat-" + cSeat + "Leaves-" +cLeaves);
+
+						
+						String loopOut = CustomersList.get(CustomersList.size()-1).name;
+						if (cID.equals(loopOut)){timeDoLoop = false;}
+						
+						fiveSets--;
+						if (fiveSets == 0){fullFlag = false;}
 						}else{							
-							CustomersList.get(i).seats = cSeat + 1;
-							}
-							
+						CustomersList.get(i).seats = cSeat + 1;
+						}
+					
 					}
 					if (time == cLeaves){
 						fiveSets++;

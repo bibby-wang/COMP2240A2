@@ -3,7 +3,7 @@
 //----COMP2240---Operating Systems----------------------------
 //----Assessment2--------------------------------------------
 //----Problem1--Sharing the Bridge---------------------------
-//----c3214157---Binbin.wang---2018/09/25---------------------
+//----c3214157---Binbin Wang---2018/09/25---------------------
 
 
 import java.util.concurrent.Semaphore;

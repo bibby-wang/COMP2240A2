@@ -26,17 +26,14 @@ class A2Problem2Thread implements Runnable {
 	}
 		
 
-
-
-		final Semaphore sempA2 = new Semaphore(5,true);	
+	final Semaphore sempA2 = new Semaphore(5,true);	
 
 	public void run() {
 		
 			try{
-					sempA2.acquire();
-	
-						System.out.println (name + "	     " + arrives+ "	      " + cSeat + "      " +cleaves);
-					sempA2.release();
+				sempA2.acquire();
+				System.out.println (name + "	     " + arrives+ "	      " + cSeat + "      " +cleaves);
+				sempA2.release();
 					
 			}
 			catch(Exception e){

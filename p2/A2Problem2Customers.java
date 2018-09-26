@@ -9,19 +9,14 @@
 class A2Problem2Customers {
 	A2Problem2Customers(){	
 	}
-	
+	String name;
+	int arrives;
+	int eatingTime;
+	int seats;	
 	A2Problem2Customers(int a,String n,int e,int s){
 		arrives = a;
 		name = n;
 		eatingTime = e;
 		seats=s;
-		
-	
 	}
-	String name;
-	int arrives;
-	int eatingTime;
-	int seats;
-
-
 }
