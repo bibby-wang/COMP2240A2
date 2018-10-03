@@ -6,7 +6,7 @@
 //----c3214157---Binbin.wang---2018/10/01---------------------
 
 //
-class A2Problem2Customers {
+public class A2Problem2Customers {
 	A2Problem2Customers(){	
 	}
 	String name;

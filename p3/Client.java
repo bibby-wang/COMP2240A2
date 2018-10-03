@@ -8,16 +8,16 @@
 
 public class Client {
 	private int ID;
-	private int	usingTime;
+	private int	brewTime;
 	private String clientType;
 
 	
 
 	//Construction
-	Client(String clientType,int ID,int usingTime){
+	Client(String clientType,int ID,int brewTime){
 		this.ID=ID;
 		this.clientType=clientType;
-		this.usingTime=usingTime;
+		this.brewTime=brewTime;
 	}
 	//get clinet ID
 	public int getID(){
@@ -28,8 +28,8 @@ public class Client {
 		return clientType;
 	}
 	//get using time
-	public String getUsingTime(){
-		return usingTime;
+	public int getBrewTime(){
+		return brewTime;
 	}
 
 }

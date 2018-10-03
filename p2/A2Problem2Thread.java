@@ -9,7 +9,7 @@
 
 import java.util.concurrent.Semaphore;
 
-class A2Problem2Thread implements Runnable {
+public class A2Problem2Thread implements Runnable {
 		
  	String name;
 	int arrives;

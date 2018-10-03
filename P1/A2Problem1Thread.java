@@ -8,7 +8,7 @@
 
 import java.util.concurrent.Semaphore;
 
-class A2Problem1Thread implements Runnable {
+public class A2Problem1Thread implements Runnable {
 	final Semaphore semp = new Semaphore(1,true);
 	int NEON = 0;
 	public void run() {
@@ -16,7 +16,7 @@ class A2Problem1Thread implements Runnable {
 		while(true){
 			//when someone want cross the bridge 
 			//first witting the brige empty
-			System.out.println(Thread.currentThread().getName() + ": writting for bridge.");  
+			System.out.println(Thread.currentThread().getName() + ": writting for bridge.Going towards North");  
 			
 			try{
 				//start cross the brige

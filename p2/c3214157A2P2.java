@@ -8,7 +8,7 @@
 import java.util.*;
 import java.io.*; 
 
-class c3214157A2P2 {
+public class c3214157A2P2 {
 
 	public static void main(String[] args){
 		int time = 0;

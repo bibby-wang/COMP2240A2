@@ -8,47 +8,57 @@
 import java.util.*;
 import java.io.*; 
 
-class c3214157A2P3 {
-
+public class c3214157A2P3 {
+	
 	public static void main(String[] args){
-		int time = 0;
-		int fiveSets = 5;	
+		int clinetNum = 0;			
+		String dataLine = null;
+		
+	
 		//Scanner dataIn= new Scanner(System.in); //get data from keyboard
 		try{
 			FileReader dataFlie = new FileReader(args[0]); //get data from file eg.java c3214157A2P3 xx.txt
      
-			//FileReader dataFlie = new FileReader("a.txt"); //get data from file
      
-			Scanner dataIn= new Scanner(dataFlie);		
-			ArrayList<A2Problem3Customers> CustomersList = new ArrayList<A2Problem3Customers>();			 
-			while(true){				
+			Scanner dataIn = new Scanner(dataFlie);	
+			
+			//get the number of total clinets
+			clinetNum = Integer.parseInt(dataIn.nextLine());			
+			
+			//dataLine = dataIn.nextLine();
+			
+			ArrayList<Client> CustomersList = new ArrayList<Client>();			 
+			int lineNum=0;
+			while(lineNum<clinetNum){				
 				
-				String dataLine = dataIn.nextLine();
+				dataLine = dataIn.nextLine();
+				// format data that from file
+				String[] dataPartArr = dataLine.split(" ");
+				String clientType = dataPartArr[0].substring(0,1);
+				int ID = Integer.parseInt(dataPartArr[0].substring(1));
 				
-				if (dataLine.equals("END")){break;}
-				Scanner dataFromat= new Scanner(dataLine);
-				// format data that from user typed
-				int cArriveTime = Integer.parseInt(dataFromat.next());
-				String cName = dataFromat.next();
-				int cEatTime = Integer.parseInt(dataFromat.next());
-				int cSeat = cArriveTime;
-
-				
+				int brewTime = Integer.parseInt(dataPartArr[1]);
+				System.out.print(clientType+"-"+ID+"-"+brewTime);
 				// save data into list
-				A2Problem3Customers customer = new A2Problem3Customers(cArriveTime,cName,cEatTime,cSeat);
+				Client customer = new Client(clientType,ID,brewTime);
 	
 				CustomersList.add(customer);
-
+				
+				//System.out.println(" data: "+dataLine+" size: "+dataLine.length());
+				
+				lineNum++;
+				
 			}
 			
-			//System.out.println(CustomersList.get(1).name);
-			//System.out.println(CustomersList.size());
+			//System.out.print(CustomersList.get(4).getType());
+			//System.out.print(CustomersList.get(4).getID());
+			//System.out.println("-"+CustomersList.get(4).getBrewTime());
+			System.out.println("total: "+CustomersList.size());
 			//A2Problem3Thread threadDemo= new A2Problem3Thread();
 			
-			System.out.println ("Customer   arrives   Seats   Leaves");			
-			boolean fullFlag = true;
-			boolean timeDoLoop = true;
-			//start loop å’Œ p2ç¨‹åºå¾ˆåƒ
+
+
+			//start loop ºÍ p2³ÌÐòºÜÏñ
 		
 		}
 		catch (FileNotFoundException e) {  

@@ -10,18 +10,20 @@ public class CoffeeMachine {
 	private int ID=0;
 	private int	usingTime=0;
 	private String currentType="C";
+	private int dispenserNumber=0;
 
 	
 
 	//Construction
-	CoffeeMachine(String currentType,int usingTime){
+	CoffeeMachine(String currentType,int usingTime,int dispenserNumber){
 		this.severType=severType;
 		this.usingTime=usingTime;
+		this.dispenserNumber=dispenserNumber;
 	}
 	
-	CoffeeMachine(String severType,int ID,int usingTime){
+	CoffeeMachine(String severType,int ID,int usingTime,int dispenserNumber){
 		this.ID = ID;
-		CoffeeMachine(severType,usingTime);
+		CoffeeMachine(severType,usingTime,dispenserNumber);
 	}
 
 	//set coffee machine ID
@@ -46,7 +48,7 @@ public class CoffeeMachine {
 		return currentType;
 	}
 	//get using time
-	public String getUsingTime(){
+	public int getUsingTime(){
 		return usingTime;
 	}
 
