@@ -11,16 +11,26 @@ import java.util.concurrent.Semaphore;
 public class A2Problem1Thread implements Runnable {
 	final Semaphore semp = new Semaphore(1,true);
 	int NEON = 0;
+	
 	public void run() {
-		//System.out.println(Thread.currentThread().getName() + ": writting for bridge.");
+		String Direction="";
+		
+		String famerName=Thread.currentThread().getName().substring(0,1);
+		if (famerName.equals("S")){
+			Direction="North";  
+		}
+		else{
+			Direction="South"; 
+		}
+		//System.out.println(Thread.currentThread().getName() + ": writting for bridge. Going towards " + Direction); 
 		while(true){
 			//when someone want cross the bridge 
 			//first witting the brige empty
-			System.out.println(Thread.currentThread().getName() + ": writting for bridge.Going towards North");  
+			System.out.println(Thread.currentThread().getName() + ": writting for bridge. Going towards " +Direction);  
 			
 			try{
 				//start cross the brige
-				//keeep one person cross the brige 
+				//keep one person cross the brige 
 				//Control thread to prevent the occurrence of monopoly
 				semp.acquire();	
 				
@@ -32,10 +42,15 @@ public class A2Problem1Thread implements Runnable {
 				
 				NEON++;
 				System.out.println("NEON"+ NEON ); //The neon sign counts of farmers
-				
+				if (Direction.equals("South")){
+					Direction="North";  
+				}
+				else{
+					Direction="South"; 
+				}
 				semp.release();//release Control
 				
-				//if (NEON>2) break;
+				//if (NEON>2) break; //in test Control the loop
 				
  			}
 			catch(Exception e){

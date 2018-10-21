@@ -20,7 +20,7 @@ public class c3214157A2P2 {
 			//FileReader dataFlie = new FileReader("p2.txt"); //get data from file
      
 			Scanner dataIn= new Scanner(dataFlie);		
-			ArrayList<A2Problem2Customers> CustomersList = new ArrayList<A2Problem2Customers>();			 
+			ArrayList<Customers> customersList = new ArrayList<Customers>();			 
 			while(true){
 				 
 				
@@ -37,17 +37,17 @@ public class c3214157A2P2 {
 
 				
 				// save data into list
-				A2Problem2Customers customer = new A2Problem2Customers(cArriveTime,cName,cEatTime,cSeat);
+				Customers customer = new Customers(cArriveTime,cName,cEatTime,cSeat);
 				
 				
-				CustomersList.add(customer);
-					
+				customersList.add(customer);
+				
 
 				
 			}
 			
-			//System.out.println(CustomersList.get(1).name);
-			//System.out.println(CustomersList.size());
+			//System.out.println(customersList.get(1).name);
+			//System.out.println(customersList.size());
 			
 			//A2Problem2Thread threadDemo= new A2Problem2Thread();
 			
@@ -57,11 +57,11 @@ public class c3214157A2P2 {
 			boolean timeDoLoop = true;
 			while(timeDoLoop){
 				
-				for (int i=0; i< CustomersList.size() ; i++){
-					String cID = CustomersList.get(i).name;
-					int cArrive = CustomersList.get(i).arrives;
-					int cSeat = CustomersList.get(i).seats;
-					int cLeaves = cSeat+CustomersList.get(i).eatingTime;
+				for (int i=0; i< customersList.size() ; i++){
+					String cID = customersList.get(i).name;
+					int cArrive = customersList.get(i).arrives;
+					int cSeat = customersList.get(i).seats;
+					int cLeaves = cSeat+customersList.get(i).eatingTime;
 					
 					
 					
@@ -69,26 +69,26 @@ public class c3214157A2P2 {
 						
 						if ( fiveSets > 0 && fullFlag){
 							//data format
-						A2Problem2Thread threadCustomer= new A2Problem2Thread();
+							A2Problem2Thread threadCustomer= new A2Problem2Thread();
 
-						threadCustomer.getData(cID,cArrive,cSeat,cLeaves);
-						new Thread(threadCustomer).start();
-				
-						
-						
-	//System.out.println ("ID-"+ cID + " Arrive-" + cArrive+ " Seat-" + cSeat + "Leaves-" +cLeaves);
+							threadCustomer.setData(cID,cArrive,cSeat,cLeaves);
+							new Thread(threadCustomer).start();
+					
+							
+							
 
-						
-						String loopOut = CustomersList.get(CustomersList.size()-1).name;
-						if (cID.equals(loopOut)){timeDoLoop = false;}
-						
-						fiveSets--;
-						if (fiveSets == 0){fullFlag = false;}
+							
+							String loopOut = customersList.get(customersList.size()-1).name;
+							if (cID.equals(loopOut)){timeDoLoop = false;}
+							
+							fiveSets--;
+							if (fiveSets == 0){fullFlag = false;}
 						}else{							
-						CustomersList.get(i).seats = cSeat + 1;
+							customersList.get(i).seats = cSeat + 1;
 						}
 					
 					}
+
 					if (time == cLeaves){
 						fiveSets++;
 						if (fiveSets == 5){fullFlag = true;}

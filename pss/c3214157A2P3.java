@@ -14,7 +14,7 @@ public class c3214157A2P3 {
 	public static void main(String[] args){
 		int clinetNum = 0;			
 		String dataLine = null;
-
+		
 	
 		try{
 			FileReader dataFlie = new FileReader(args[0]); //get data from file eg.java c3214157A2P3 xx.txt
@@ -47,29 +47,18 @@ public class c3214157A2P3 {
 				lineNum++;
 				
 			}
+			
 
-			CoffeeMachine threadCM = new CoffeeMachine();
-			int timeAndNum[]=new int[2];
-			int countH=0;
-			int countC=0;
+
+			
 			for (int i=0; i<clientsList.size(); i++) {
-				
-				if (clientsList.get(i).getType().equals("H")){
-					countH++;
-					timeAndNum=threadCM.startHotWork(clientsList.get(i).getBrewTime());
-					System.out.println("("+timeAndNum[0]+")"+clientsList.get(i).getType()+clientsList.get(i).getID()+" uses dispenser "+timeAndNum[1]+" (time: "+clientsList.get(i).getBrewTime()+")");
-				
-					
-				}else{
-					countC++;
-					timeAndNum=threadCM.startColdWork(clientsList.get(i).getBrewTime());
-					System.out.println("("+timeAndNum[0]+")"+clientsList.get(i).getType()+clientsList.get(i).getID()+" uses dispenser "+timeAndNum[1]+" (time: "+clientsList.get(i).getBrewTime()+")");
-										
-					
-				}
-				
 
-				//threadCM.notify();
+			
+				
+				CoffeeMachine threadCM= new CoffeeMachine(clientsList.get(i));
+				threadCM.setType(clientsList.get(i).getType());
+				threadCM.run();
+				
 
 			}
 

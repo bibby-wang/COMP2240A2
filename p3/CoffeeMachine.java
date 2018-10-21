@@ -5,52 +5,119 @@
 //----Problem1--Sharing the Bridge---------------------------
 //----c3214157---Binbin Wang---2018/09/30---------------------
 
-
-public class CoffeeMachine {
-	private int ID=0;
-	private int	usingTime=0;
-	private String currentType="C";
-	private int dispenserNumber=0;
-
+public class CoffeeMachine{
+	private int machineTime=0;
+	private static String currentType="";
+	int timeAndNum[]={0,0};
+	static boolean dispensers[] = {true,true,true};
+	static boolean disflg = true;
 	
-
 	//Construction
-	CoffeeMachine(String currentType,int usingTime,int dispenserNumber){
-		this.severType=severType;
-		this.usingTime=usingTime;
-		this.dispenserNumber=dispenserNumber;
+
+	CoffeeMachine(){
+		timeAndNum[0]=0;
+		timeAndNum[1]=1;
+		
 	}
 	
-	CoffeeMachine(String severType,int ID,int usingTime,int dispenserNumber){
-		this.ID = ID;
-		CoffeeMachine(severType,usingTime,dispenserNumber);
-	}
 
-	//set coffee machine ID
-	public void setID(int ID){
-		this.ID = ID;
-	}
 	//change the type to new type
 	public void setType(String newType){
 		this.currentType = newType;
 	}
 	
 	//add using time
-	public void addUsingTime(int usingTime){
-		this.usingTime+=usingTime;
+	public void setTime(int time){
+		this.machineTime+=time;
 	}
-	//get Coffee Machine ID
-	public int getID(){
-		return ID;
-	}
+
 	//get severs type H(hot) or C(cool)
 	public String currentType(){
 		return currentType;
 	}
 	//get using time
-	public int getUsingTime(){
-		return usingTime;
+	public int getTime(){
+		return machineTime;
 	}
 
+
+	
+	public synchronized int[] startHotWork(int bTime) {
+		currentType="H";
+		
+		while (!currentType.equals("H")&&!disflg) 
+		{
+			try { wait(); }
+			catch (InterruptedException e) { } 
+			finally { } 
+		} 		
+		
+		//GET DISPENSER NUMBER
+		if (dispensers[0]){
+			timeAndNum[1]=1;
+			dispensers[0]=false;
+			
+		}else 
+			if (dispensers[1]){
+			timeAndNum[1]=2;
+			dispensers[1]=false;
+				
+		}else 
+			if (dispensers[2]){
+			timeAndNum[1]=3;
+			dispensers[2]=false;
+			
+		}else{
+			disflg=false;
+		}
+		
+
+
+
+		dispensers[timeAndNum[1]-1]=true;
+		disflg=true;
+			
+		notify(); 
+		timeAndNum[0]=machineTime;
+		setTime(bTime);
+		return timeAndNum;
+	}
+	
+	public synchronized int[] startColdWork(int bTime) {
+		
+		currentType="C";
+		
+		while (!currentType.equals("C")&&!disflg) 
+		{
+			try { wait(); }
+			catch (InterruptedException e) { } 
+			finally { } 
+		} 
+
+		//GET DISPENSER NUMBER
+		if (dispensers[0]){
+			timeAndNum[1]=1;
+			dispensers[0]=false;
+		}else if (dispensers[1]){
+			timeAndNum[1]=2;
+			dispensers[1]=false;
+		}else if (dispensers[2]){
+			timeAndNum[1]=3;
+			dispensers[2]=false;
+		}else{
+			disflg=false;
+		}
+		
+
+		dispensers[timeAndNum[1]-1]=true;
+		disflg=true;	
+		notify(); 
+		timeAndNum[0]=machineTime;
+		setTime(bTime);
+		return timeAndNum;
+	}
+
+	
+	
 }
  

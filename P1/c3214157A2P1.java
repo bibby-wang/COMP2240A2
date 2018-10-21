@@ -13,8 +13,8 @@
 class c3214157A2P1{
 	public static void main(String[] args) {
 		//get how many Farmers form user input eg.-----> java A2Problem1 N=<NumN>, S=<NumS>
-        //int NumN =  Integer.parseInt(args[0].substring(2,3)); //get the number of North farmers
-        //int NumS =  Integer.parseInt(args[1].substring(2,3)); //get the number of South farmers 
+		//int NumN =  Integer.parseInt(args[0].substring(2,3)); //get the number of North farmers
+		//int NumS =  Integer.parseInt(args[1].substring(2,3)); //get the number of South farmers 
 		
 		//get how many Farmers form user input eg.-----> java A2Problem1 <NumN> <NumS>
 		int NumN =  Integer.parseInt(args[0]); //get the number of North farmers
@@ -22,7 +22,8 @@ class c3214157A2P1{
 		
 		A2Problem1Thread threadFamer= new A2Problem1Thread();
 		
-		System.out.println(Thread.currentThread().getName() + ": Start main");
+		//System.out.println(Thread.currentThread().getName() + ": Start main");
+		
 		//named thread to become different farmers
 		//number from the user input
 		for(int i=1; i <= NumS; i++){

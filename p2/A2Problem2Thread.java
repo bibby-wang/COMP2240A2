@@ -17,28 +17,29 @@ public class A2Problem2Thread implements Runnable {
 	int cEatTime;
 	int cSeat;
 	
-	public void getData(String cName,int cArriveTime,int cSeat,int cleaves){
+	public void setData(String cName,int cArriveTime,int cSeat,int cleaves){
 
 		this.name = cName;
 		this.arrives = cArriveTime;
 		this.cSeat=cSeat;
 		this.cleaves=cleaves;
 	}
-		
-
-	final Semaphore sempA2 = new Semaphore(5,true);	
-
+	
+	
+	final Semaphore sempP2 = new Semaphore(5,true);	
+	
 	public void run() {
 		
-			try{
-				sempA2.acquire();
-				System.out.println (name + "	     " + arrives+ "	      " + cSeat + "      " +cleaves);
-				sempA2.release();
-					
-			}
-			catch(Exception e){
-				System.out.println(e);
-			}
+		try{
+			
+			sempP2.acquire();
+			System.out.println (name + "	     " + arrives+ "	      " + cSeat + "      " +cleaves);
+			sempP2.release();
+			
+		}
+		catch(Exception e){
+			System.out.println(e);
+		}
 
 	}
 
